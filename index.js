@@ -47,6 +47,15 @@ function checkofclick (n)
   }
   let item = 0;
 
-  while (item < 5) 
-    $('#itemlist').html(`<li></li>`} 
+  function list(item)
+  {
+
+   while (item < 10) 
+   {
+     $('#itemlist').html(`<li></li>`};
+     item++;
+     console.log(item) 
+   }
+  }
+  
  }
