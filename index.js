@@ -52,10 +52,10 @@ function checkofclick (n)
 
    while (item < 10) 
    {
-     $('#itemlist').html(`<li></li>`};
+     $('#itemlist').append(`<li></li>`);
      item++;
      console.log(item) 
    }
   }
-  
+
  }
