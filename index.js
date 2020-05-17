@@ -55,6 +55,7 @@ function addElement() {
 }
 
 function deleteElement(element) {
+  
 
     console.log("Удалить элемент");
     console.log(element);
