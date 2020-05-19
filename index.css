@@ -1,7 +1,12 @@
 body 
 { 
- background: url("./60P9094.jpg"); 
+ background: url("./60P9094.jpg") center; 
 } 
+
+html
+body{
+	margin= 0;
+}
  
  .header
  {

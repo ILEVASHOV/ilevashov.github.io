@@ -75,5 +75,37 @@ function toggleColor(element, active = false) {
         $(element).css('color', defaultColor);
     }
 
+
 }
 
+let menuLinks = [
+    'Home',
+    'Media',
+    'Contancs',
+    'Follow',
+];
+
+function generateMenulinks() {
+
+  let html = '';
+
+  for (const item of menuLinks){
+      html += `
+        <li>
+          <a>${item}</a>
+        </li>
+
+      `;
+  }
+
+  return html;
+
+}
+
+$(function () {
+  console.log('Hello world');
+
+  generateMenulinks();
+
+  $('#menuLinks').append(generateMenulinks());
+});
