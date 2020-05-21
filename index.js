@@ -1,5 +1,34 @@
 let defaultNumber = 0;
 let isDec = false;
+
+function setValue() {
+
+ let value = prompt('Введите значение');
+
+ $('#secvalue').html(value);
+}
+
+function manValue(element, active = false) {
+  let hideElement = $('#setValue');
+  let button = $('#hugbutton');
+  let bool = $(button).hasClass('active');
+
+  if (bool)  {
+      $(button).removeClass('active');
+      $(button).text('Скрыть');
+      $(hideElement).show();
+  } else {
+     $(button).addClass('active');
+     $(button).text('Показать');
+     $(hideElement).hide();
+
+  }
+
+  console.log($(button).hasClass('active'));
+  console.log(button);
+
+}
+
 function inc(n) {
     n = n + 1;
     console.log("число увеличивается на 1", n);
@@ -102,10 +131,22 @@ function generateMenulinks() {
 
 }
 
+  let user = '';
+
 $(function () {
   console.log('Hello world');
 
   generateMenulinks();
 
   $('#menuLinks').append(generateMenulinks());
+
+  if (!localStorage.getItem('name')) {
+      localStorage.setItem ('name', 'Игорь');
+  } else {
+      user = localstorag.getItem('name');
+
+  }
+
+
+  $('#userName').html(user);
 });
