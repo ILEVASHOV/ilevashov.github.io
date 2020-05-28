@@ -1,6 +1,12 @@
 let defaultNumber = 0;
 let isDec = false;
 
+
+// let blnc = $('#Balance').val();
+// console.log(blnc);
+
+
+
 function setValue() {
 
  let value = prompt('Введите значение');
@@ -140,13 +146,55 @@ $(function () {
 
   $('#menuLinks').append(generateMenulinks());
 
-  if (!localStorage.getItem('name')) {
-      localStorage.setItem ('name', 'Игорь');
-  } else {
-      user = localstorag.getItem('name');
+  if (!localStorage.getItem('name')) {         // - существует ли ящик? (true | foulse)
+      localStorage.setItem ('name', 'Игорь'); // - если значение выше true (!foulse)
+  } else {                                    // - выполни условие   
+      user = localStorage.getItem('name');
 
   }
 
 
   $('#userName').html(user);
+
+
+  // $('button').on('click', function () {
+
+  //     let text = $(this).text().trim();
+
+  //     switch (text) {
+  //       case "Скрыть":  // if (text === 'Скрыть') {}
+  //         toggleColor();
+  //       case "Показать"
+  //         toggleColor();
+  //           break;
+
+  //       case "Ввести данные":
+  //         console.log(text);
+  //         break;
+
+  //     }
+  // });
+
 });
+
+
+
+
+function buyphone() {  
+  let cash = prompt("Доступная сумма");
+  let phone = prompt("Стоимость телефона");
+  let aks = prompt("Стоимость акссесуара");
+  const TAX_RATE = 0.08;
+  let quantity_phone = 0;
+
+
+  while ( cash > (phone - (phone * TAX_RATE))) {
+    
+      cash = cash - phone - (phone * TAX_RATE)
+      quantity_phone++
+    
+  } 
+
+  console.log("Вы купили " + quantity_phone + " телефонов!");
+  console.log("Ваша сдача " + cash);
+}
