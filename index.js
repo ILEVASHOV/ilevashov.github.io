@@ -4,8 +4,41 @@ let isDec = false;
 
 // let blnc = $('#Balance').val();
 // console.log(blnc);
+let modalCounter = 0;
+
+function createPopup (){
+  console.log("консоль лог");
+
+  let container = document.createElement('div'); // создаем див и записываем в переменную
+  let textModal = prompt('показать всплывающее окно'); // записываем по нажатию кнокпи введенные данные
+
+  let id = 'modal_' + modalCounter;
+  
+  container.classList.add('modal');
+  container.setAttribute('id', id); // мы добавляем 
+
+  container.innerHTML = 
+    `<div class = "modal-contant">
+      <span class="close">&times;</span>
+      <p>${textModal}</p>
+    </div>`;
+
+    modalCounter++;
+    $('#modals').html(container);
+    container.style.display = 'flex';
+    let closeButton = $('#' + id).children().children('span'); //
 
 
+    $(closeButton).on('click', function(){
+
+        document.getElementById(id).remove();
+    });
+
+
+  console.log(container);
+
+
+}
 
 function setValue() {
 
@@ -162,7 +195,9 @@ $(function () {
   //     let text = $(this).text().trim();
 
   //     switch (text) {
-  //       case "Скрыть":  // if (text === 'Скрыть') {}
+  //       case "Скрыть":  
+
+  //       if (text === 'Скрыть') {}
   //         toggleColor();
   //       case "Показать"
   //         toggleColor();
@@ -174,6 +209,10 @@ $(function () {
 
   //     }
   // });
+$('#createPopup').on('click', function(){
+  createPopup();
+});
+
 
 });
 
@@ -184,17 +223,53 @@ function buyphone() {
   let cash = prompt("Доступная сумма");
   let phone = prompt("Стоимость телефона");
   let aks = prompt("Стоимость акссесуара");
+  cash = Number( cash );
+  phone = Number( phone );
+  aks = Number( aks );
   const TAX_RATE = 0.08;
   let quantity_phone = 0;
+  let quantity_aks = 0;
+
+  let SumWithTaks = phone + (phone * TAX_RATE);
+
+  // console.log(cash);
+  // console.log(phone);
+  // console.log(aks);
+  // console.log(SumWithTaks);
 
 
-  while ( cash > (phone - (phone * TAX_RATE))) {
+  while ( cash >= SumWithTaks ) {
     
-      cash = cash - phone - (phone * TAX_RATE)
+      cash = cash - SumWithTaks
       quantity_phone++
+
+      if (cash >= aks) {
+
+    cash = cash - aks
+    quantity_aks++
+  }
     
   } 
 
+  while (cash >= aks) {
+
+    cash = cash - aks
+    quantity_aks++
+  }
+
+
+  
+
+
   console.log("Вы купили " + quantity_phone + " телефонов!");
-  console.log("Ваша сдача " + cash);
+  console.log("Ваша сдача " + cash.toFixed( 2 ));
+  console.log("У вас " + quantity_aks + " акссесуаров");
+
 }
+
+
+
+$ ('#userName').html(user);
+
+
+

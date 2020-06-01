@@ -8,12 +8,12 @@
 <body> 
  <div class="header">
  		<ul id="menuLinks">
- 			<li><a href="">Главная</a><li>
+ 			<!-- <li><a href="">Главная</a><li>
  			<li><a href="">Рассчет стоимости</a><li>
  			<li><a href="">Фотоотчет</a><li>
  			<li><a href="">О нас</a><li>
  			<li><a href="">Контакты</a><li>
- 		</ul>
+ --> 		</ul>
  </div>	
  <div class="container"> 
   <img width="400" src ="./images.jpg"> 
@@ -34,19 +34,21 @@
 <ul id="itemlist"></ul>
 </body>
 
- <button class="button" >увеличить</button> <br> 
+ <button id="createPopup" class="button" >показать всплывающее окно</button> <br>
+
+ <button class="button" //onclick="inc(defaultNumber)//">увеличить</button> <br> 
  
- <button class="button" >уменьшить</button> <br> 
+ <button class="button" onclick="dec(defaultNumber)">уменьшить</button> <br> 
  
- <button class="button" > Записать новое значение </button> <br>
+ <button class="button" onclick="setValue()"> Записать новое значение </button> <br>
 
- <button id="hugbutton" class="button" > Скрыть </button> <br>
+ <button id="hugbutton" class="button" onclick="manValue(this);"> Скрыть </button> <br>
 
- <button class="button" >проверка уменьшение или увеличение</button> <br> 
+ <button class="button" onclick="checkofclick(defaultNumber)">проверка уменьшение или увеличение</button> <br> 
 
- <button class="button" >Ввести данные</button> <br>
+ <button class="button" onclick="addElement()">Ввести данные</button> <br>
 
- <button class="button" >показать список</button> <br>
+ <button class="button" onclick="list(item)">показать список</button> <br>
 
  <button class="button" onclick="buyphone()">Доступная сумма </button> <br>
 
@@ -54,6 +56,11 @@
 
  <button class="button" onclick="buyphone()">Стоимость акссесуара</button> <br>
 
+
+
+ 	<div id="modals"></div>
+  <!-- Modal content -->
+ 
 
 <!-- <div>
 	<p>Баланс</p>
@@ -67,21 +74,21 @@
 
 
 
-<!--  <button class="button" //onclick="inc(defaultNumber)//">увеличить</button> <br> 
- 
- <button class="button" onclick="dec(defaultNumber)">уменьшить</button> <br> 
- 
- <button class="button" onclick="setValue()"> Записать новое значение </button> <br>
-
- <button id="hugbutton" class="button" onclick="manValue(this);"> Скрыть </button> <br>
-
- <button class="button" onclick="checkofclick(defaultNumber)">проверка уменьшение или увеличение</button> <br> 
-
- <button class="button" onclick="addElement()">Ввести данные</button> <br>
-
- <button class="button" onclick="list(item)">показать список</button> <br> -->
 
  
+<!--  <button class="button" >увеличить</button> <br> 
+ 
+ <button class="button" >уменьшить</button> <br> 
+ 
+ <button class="button" > Записать новое значение </button> <br>
+
+ <button id="hugbutton" class="button" > Скрыть </button> <br>
+
+ <button class="button" >проверка уменьшение или увеличение</button> <br> 
+
+ <button class="button" >Ввести данные</button> <br>
+
+ <button class="button" >показать список</button> <br> -->
 
 
 <!--создать сайт визитку
