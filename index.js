@@ -5,6 +5,7 @@ let isDec = false;
 // let blnc = $('#Balance').val();
 // console.log(blnc);
 let modalCounter = 0;
+let polarCalcute = 0;
 
 function createPopup (){
   console.log("консоль лог");
@@ -18,7 +19,7 @@ function createPopup (){
   container.setAttribute('id', id); // мы добавляем 
 
   container.innerHTML = 
-    `<div class = "modal-contant">
+    `<div class = "modal-content">
       <span class="close">&times;</span>
       <p>${textModal}</p>
     </div>`;
@@ -36,9 +37,48 @@ function createPopup (){
 
 
   console.log(container);
-
-
 }
+
+  function CalccreatePopup (){
+ 
+
+  let Calccontainer = document.createElement('div'); // создаем див и записываем в переменную
+
+  let CalctextModal = buyphone; // записываем по нажатию кнокпи введенные данные
+
+  let divid = 'polar_' + polarCalcute;
+  
+  Calccontainer.classList.add('polar');
+  Calccontainer.setAttribute('id', divid); // мы добавляем айди
+
+  Calccontainer.innerHTML = 
+    `<div class = "polar-content">
+      <span class="close">&times;</span>
+
+         <button class="button" onclick="buyphone()"> Доступная сумма </button> <br>
+
+          <button class="button" onclick="buyphone()"> Стоимость телефона </button> <br>
+
+          <button class="button" onclick="buyphone()"> Стоимость акссесуара </button> <br>
+
+
+    </div>`;
+
+    polarCalcute++;
+    $('#polars').html(Calccontainer);
+    Calccontainer.style.display = 'flex';
+    let closeCalcute = $('#' + divid).children().children('span'); //
+
+
+    $(closeCalcute).on('click', function(){
+
+        document.getElementById(divid).remove();
+    });
+
+console.log(Calccontainer);
+}
+
+
 
 function setValue() {
 
@@ -212,6 +252,10 @@ $(function () {
 $('#createPopup').on('click', function(){
   createPopup();
 });
+
+  $('#CalccreatePopup').on('click', function(){ 
+    CalccreatePopup();
+  });
 
 
 });
