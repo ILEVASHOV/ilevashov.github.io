@@ -1,6 +1,61 @@
 let defaultNumber = 0;
 let isDec = false;
 
+const boxes = [{
+    title: 'Заголовок 1',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean condimentum nibh arcu, et luctus tellus vulputate molestie. Quisque fringilla hendrerit feugiat. Cras eu tellus sed nisl euismod euismod. Sed molestie, dui quis convallis ultrices, mi leo hendrerit enim, in facilisis elit augue in orci. Suspendisse ut gravida augue. Maecenas eu ultrices ex. Nullam purus ipsum, suscipit et ligula nec, ultricies ullamcorper enim. Integer laoreet iaculis magna sit amet malesuada.',
+    autor: 'Дарт Вейдер',
+    hasButton: false,
+  },
+  {
+    title: 'Заголовок 2',
+    text: 'Nunc viverra tortor eget elementum tempor. Aenean tincidunt mauris sed pulvinar finibus. Nulla vehicula urna a ligula ullamcorper, nec malesuada mauris feugiat. Praesent dui ante, ultricies a lobortis facilisis, pretium id urna. Nullam quis efficitur lectus. Duis consequat ante nunc, a congue lectus congue nec. Mauris fringilla molestie nisl eu bibendum.',
+    autor: 'Гендальф',
+    hasButton: true,
+  },
+  {
+    title: 'Заголовок 3',
+    text: 'Quisque posuere eros et risus tristique accumsan. Curabitur eu consequat est. Etiam eleifend maximus dolor, sit amet cursus risus luctus et. Nunc interdum, tellus vel vestibulum luctus, lacus eros luctus dui, ut vulputate metus metus non quam. Pellentesque efficitur justo at turpis pharetra bibendum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc vitae arcu mollis, volutpat nunc sed, molestie leo. Donec sit amet erat fringilla sem sodales bibendum eu nec mauris. Suspendisse ut elit erat.',
+    autor: 'Тони Старк',
+    hasButton: false,
+  }
+];
+function createCardBoxes() {
+  let html = '';
+  let button = `<div style="margin-left: 8px">
+            <button>Подробнее</button>
+          </div>`;
+  for (const box of boxes) {
+    html += `
+    <div class="box-container">
+      <div>
+        <div class="box-title">
+          ${box.title}
+        </div>
+        <div class="box-content">
+          ${box.text}
+        </div>
+      </div>
+      <div class="box-autor">
+        <div>
+          Автор :
+        </div>
+        <div class="autor">
+          ${box.autor}
+        </div>
+        ${ hasButton(box.hasButton) }
+      </div>
+    </div>`;
+  }
+  function hasButton(box) {
+    if (box) {
+      return button;
+    }
+    return '';
+  }
+  $('#data_container').html(html);
+}
+
 
 // let blnc = $('#Balance').val();
 // console.log(blnc);
@@ -55,12 +110,13 @@ function createPopup (){
     `<div class = "polar-content">
       <span class="close">&times;</span>
 
-         <button class="button" onclick="buyphone()"> Доступная сумма </button> <br>
+         <input id="Balance" type="number" placeholder="Введите доступную сумму"> <br>
 
-          <button class="button" onclick="buyphone()"> Стоимость телефона </button> <br>
+          <input id="PhonePrice" type="number" placeholder="Введите стоимость телефона"> <br>
 
-          <button class="button" onclick="buyphone()"> Стоимость акссесуара </button> <br>
+          <input id="AksPrice" type="number" placeholder="Введите стоимость акссесуара"> <br>
 
+          <button class="button" onclick="buyphone()">Рассчитать</button> <br>
 
     </div>`;
 
@@ -264,9 +320,9 @@ $('#createPopup').on('click', function(){
 
 
 function buyphone() {  
-  let cash = prompt("Доступная сумма");
-  let phone = prompt("Стоимость телефона");
-  let aks = prompt("Стоимость акссесуара");
+  let cash = $("#Balance").val();
+  let phone = $("#PhonePrice").val();
+  let aks = $("#AksPrice").val();
   cash = Number( cash );
   phone = Number( phone );
   aks = Number( aks );
@@ -299,9 +355,12 @@ function buyphone() {
 
     cash = cash - aks
     quantity_aks++
-  }
 
+ }
 
+ alert ("Вы купили " + quantity_phone + " телефонов!");
+
+// alert ("Вы купили" + quantity_phone + "телефонов!"\n"Ваша сдача" + cash.toFixed( 2 )\n"У вас" + quantity_aks + "акссесуаров");
   
 
 
